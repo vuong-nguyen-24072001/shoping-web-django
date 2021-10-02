@@ -1,0 +1,117 @@
+{% extends 'store/main.html' %}
+{% load static%}
+
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/product_detail.css' %}">
+{% endblock links %}
+
+{% block scripts %}
+    <script>
+        const productCurrent = '{{ product.category }}'
+    </script>
+    <script src="{% static 'store/js/ProductDetail.js' %}"></script>
+{% endblock scripts %}
+
+{% block content %}
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1"><img src="{{ product.image.url }}"></div>
+                        </div>
+
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <div class="rating">
+                            <div class="stars">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <span class="review-no">41 reviews</span>
+                        </div>
+                        <h4 class="price">current price: <span>${{ product.price }}</span></h4>
+                        <div class="action">
+                            <button data-product="{{ product.id }}" data-action="add"
+                                class="btn add-to-cart btn-default add-btn update-cart">
+                                <i class="fas fa-cart-plus"></i>
+                                Add
+                            </button>
+                            <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card span-description">
+            <h4>Descripton</h4>
+            <span>{{ product.description|linebreaksbr }}</span>
+        </div>
+        <div class="card">
+            <h4>Evaluations</h4>
+            <span>evaluation</span>
+        </div>
+        <div class="card">
+            <h4>Products related to this item</h4> 
+
+                <div class="control-slide">
+                    <!-- Controls -->
+                    <div class="controls float-right hidden-xs">
+                        <a class="" href="#">All Related Product</a>
+                        <a class="left fa fa-chevron-left btn btn" href="#carousel-example"
+                            data-slide="prev"></a><a class="right fa fa-chevron-right btn" href="#carousel-example"
+                                data-slide="next"></a>
+                    </div>
+                </div>
+            <div class="container">
+                <div class="row">
+                    <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+            
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide2">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+            
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+                                    <div class="col-sm-3">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

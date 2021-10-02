@@ -1,0 +1,46 @@
+{% extends 'saler_channel/saler_main.html' %}
+{% load static%}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- sidebar-wrapper  -->
+<main class="page-content">
+    <div class="container-fluid">
+        <h2>Your all products</h2>
+        <hr>
+        <div class="box-element">
+            <br>
+            <br>
+            <table class="table">
+                <tr>
+                    <th>
+                        <h5>{{ items.count }} products<strong></strong></h5>
+                    </th>
+                    <th>
+                        <a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'create_product' %}">Add a new product</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="box-element">
+            <div class="row">
+                {% for item in items %}
+                <div class="col-lg-2">
+                    <a href="{% url 'update_product' item.id %}">
+                        <img class="thumbnail" src="{{ item.image.url }}">
+                    </a>
+                    <div class="box-element product">
+                        <h5><strong>{{ item.name }}</strong></h5>
+                        <hr>    
+                        <h4 style="float: right; font-size: 20px;"><strong>${{ item.price }}</strong></h4>
+                        <h6 style="line-height: 26px;">storage: {{ item.quantity }}</h6>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <hr>
+    </div>
+</main>
+<!-- page-content" -->
+{% endblock content %}
